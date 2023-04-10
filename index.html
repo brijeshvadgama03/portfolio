@@ -20,55 +20,92 @@
           <h1 class="text-center">Contact Us</h1>
           <hr class="w-25 m-auto" />
           <br /><br /><br />
-          <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-6 col-12 m-auto">
-              <form>
-                <h4 class="align-left">
-                  <b>Inquery Now</b>
-                </h4>
+          <form onsubmit="Mail(); reset(); return false;">
+            <div class="row">
+              <div class="col-sm-12 col-md-6 col-lg-6 col-12 m-auto">
+                <form>
+                  <h4 class="align-left">
+                    <b>Inquery Now</b>
+                  </h4>
 
-                <div class="mb-3 my-5">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Your Name"
-                    required
-                  />
-                </div>
+                  <div class="mb-3 my-5">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      placeholder="Enter Your Name"
+                    />
+                  </div>
 
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Your Mobile Number"
-                    required
-                  />
-                </div>
+                  <div class="mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="mobile"
+                      placeholder="Enter Your Mobile Number"
+                    />
+                  </div>
 
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Your Email Address"
-                  />
-                </div>
+                  <div class="mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="email"
+                      placeholder="Enter Your Email Address"
+                    />
+                  </div>
 
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Your Query"
-                  />
-                </div>
-                <div class="d-grid gap-2">
-                  <button type="submit" class="btn btn-primary">Send</button>
-                </div>
-              </form>
+                  <div class="mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="query"
+                      placeholder="Enter Your Query"
+                    />
+                  </div>
+                  <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                  </div>
+                </form>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </section>
+
+    <!-- email -->
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <script>
+      function Mail() {
+        let name = document.getElementById("name").value;
+        let mobile = document.getElementById("mobile").value;
+        let email = document.getElementById("email").value;
+        let query = document.getElementById("query").value;
+
+        Email.send({
+          Host: "smtp.elasticemail.com",
+          Username: "brijuvadgama@gmail.com",
+          Password: "B638D6399B1BB1FF22FB77BFD23E50E2F864",
+          To: "brijeshgajjar1401@gmail.com",
+          From: "brijuvadgama@gmail.com",
+          Subject: "Mail From Contact Form",
+          Body:
+            "Name : " +
+            name +
+            "<br/> Mobile : " +
+            mobile +
+            "<br/> Email : " +
+            email +
+            "<br/> Query : " +
+            query,
+        }).then((message) => alert("Your Message Has Been Sent Successfully"));
+      }
+    </script>
+
+    <!-- Bootstrap -->
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
